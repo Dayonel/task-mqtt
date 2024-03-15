@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "pull": "drizzle-kit introspect:pg"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.30.2",
+    "postgres": "^3.4.3"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.20.14"
+  }
+}
