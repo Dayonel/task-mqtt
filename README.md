@@ -26,19 +26,3 @@ supabase db reset
 ```
 supabase functions new hello-world
 ```
-
-## Run a function
-```
-deno run --allow-net .\supabase\functions\light\index.ts
-```
-
-## Run mosquitto
-```
-mosquitto -v
-```
-
-## Publish a message
-
-```
-mosquitto_pub -h test.mosquitto.org -t 'topic1' -m 'hello'
-```
