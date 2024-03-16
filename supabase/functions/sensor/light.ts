@@ -4,7 +4,7 @@ import * as schema from "../_shared/schema/index.ts";
 import { Light } from "../_shared/types/Light.ts";
 import { lights } from "../_shared/schema/lights.ts";
 
-const connectionString = Deno.env.get("SUPABASE_DB_URL")!;
+const connectionString = Deno.env.get("DATABASE_URL")!;
 
 export const light = async (id: number, req: Request) => {
   try {
