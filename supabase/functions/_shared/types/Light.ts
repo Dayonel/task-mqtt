@@ -1,3 +1,5 @@
-export interface Light {
-    light: number;
-}
+import { z } from "zod";
+
+export const Light = z.object({
+  intensity: z.number(),
+});
