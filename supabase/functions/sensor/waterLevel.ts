@@ -1,6 +1,5 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { eq } from "npm:drizzle-orm@^0.30.2/expressions";
 import { deviceSensors } from "../_shared/schema/deviceSensors.ts";
 import * as schema from "../_shared/schema/index.ts";
 import { WaterLevel } from "../_shared/types/WaterLevel.ts";
@@ -15,9 +14,8 @@ export const waterLevel = async (id: number, req: Request) => {
     const client = postgres(connectionString, { prepare: false });
     const db = drizzle(client, { schema });
 
-    const result = (await db.update(deviceSensors)
-      .set({ waterLevel: input.data.level })
-      .where(eq(deviceSensors.deviceId, id)).returning())[0];
+    const result = await db.insert(deviceSensors)
+      .values({ deviceId: id, waterLevel: input.data.level }).returning();
 
     return result
       ? new Response(JSON.stringify(result), {
