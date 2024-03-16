@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "drizzle-orm": "npm:drizzle-orm@0.30.2",
+    "drizzle-orm/postgres-js": "npm:drizzle-orm@0.30.2/postgres-js",
+    "drizzle-orm/pg-core": "npm:drizzle-orm@0.30.2/pg-core",
+    "postgres": "npm:postgres@3.4.3"
+  }
+}
