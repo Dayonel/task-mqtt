@@ -1,8 +1,8 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { deviceSensors } from "../_shared/schema/deviceSensors.ts";
 import * as schema from "../_shared/schema/index.ts";
 import { WaterLevel } from "../_shared/types/WaterLevel.ts";
+import { waterLevels } from "../_shared/schema/waterLevels.ts";
 
 const connectionString = Deno.env.get("SUPABASE_DB_URL")!;
 
@@ -14,7 +14,7 @@ export const waterLevel = async (id: number, req: Request) => {
     const client = postgres(connectionString, { prepare: false });
     const db = drizzle(client, { schema });
 
-    const result = await db.insert(deviceSensors)
+    const result = await db.insert(waterLevels)
       .values({ deviceId: id, waterLevel: input.data.level }).returning();
 
     return result

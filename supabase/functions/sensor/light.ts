@@ -1,8 +1,8 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { deviceSensors } from "../_shared/schema/deviceSensors.ts";
 import * as schema from "../_shared/schema/index.ts";
 import { Light } from "../_shared/types/Light.ts";
+import { lights } from "../_shared/schema/lights.ts";
 
 const connectionString = Deno.env.get("SUPABASE_DB_URL")!;
 
@@ -14,7 +14,7 @@ export const light = async (id: number, req: Request) => {
     const client = postgres(connectionString, { prepare: false });
     const db = drizzle(client, { schema });
 
-    const result = await db.insert(deviceSensors)
+    const result = await db.insert(lights)
       .values({ deviceId: id, light: input.data.intensity }).returning();
 
     return result
