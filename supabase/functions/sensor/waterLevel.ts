@@ -4,7 +4,7 @@ import * as schema from "../_shared/schema/index.ts";
 import { WaterLevel } from "../_shared/types/WaterLevel.ts";
 import { waterLevels } from "../_shared/schema/waterLevels.ts";
 
-const connectionString = Deno.env.get("DATABASE_URL")!;
+const connectionString = Deno.env.get("SUPABASE_DB_URL")!;
 
 export const waterLevel = async (id: number, req: Request) => {
   try {
